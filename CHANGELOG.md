@@ -6,6 +6,8 @@ All notable changes to SkillEvaluator are documented in this file.
 
 ### Fixed
 
+- Stop the PII scan reporting User-Agent product versions such as `Chrome/140.0.0.0`
+  as public IP addresses. Chromium's reduced User-Agent gives every version this shape.
 - Keep headings and comments inside fenced code examples in their enclosing Markdown
   section during Tier 2 content chunking, preserving original source line numbers.
 - Run the public Docker image as an unprivileged user, with writable default report and home directories.
