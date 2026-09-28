@@ -197,6 +197,14 @@ option to adjust. Increasing
 either budget can increase provider usage or processing time. Neither option
 changes the separate path, input-byte, catalog-file, vector, or result limits.
 
+Collection discovery allows up to 20,000 paths, independently of the
+4,096-path limit inside one skill. Each visited directory and file counts,
+including files that are not selected as manifests; excluded directories count
+once, but their contents are pruned. This accommodates all 5,000 supported
+entries when each skill has a directory and `SKILL.md`. Collections with more
+supporting files or deeper layouts may reach the path ceiling before the
+selected-entry budget.
+
 For a saved catalog query, `--max-entries` does not reduce the catalog's existing
 5,000-entry capacity. Its comparison work is `catalog entries * dimensions`,
 bounded by `--max-scalar-comparisons`.

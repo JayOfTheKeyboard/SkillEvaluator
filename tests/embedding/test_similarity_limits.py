@@ -72,6 +72,15 @@ def test_default_entry_boundary_and_explicit_increase(tmp_path: Path) -> None:
     assert EmbeddingRegistry(_client(), max_entries=5_000).size == 0
 
 
+def test_maximum_entry_budget_extracts_all_5000_skills(tmp_path: Path) -> None:
+    _collection(tmp_path, 5_000)
+
+    entries = discover_and_extract(tmp_path, "skill", max_entries=5_000)
+
+    assert len(entries) == 5_000
+    assert {entry.name for entry in entries} == {f"skill-{index}" for index in range(5_000)}
+
+
 @pytest.mark.parametrize("content_type", ["skill", "rules", "workflows"])
 def test_entry_budget_counts_selected_invalid_manifests(tmp_path: Path, content_type: str) -> None:
     for index in range(2):

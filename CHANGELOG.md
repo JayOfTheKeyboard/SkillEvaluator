@@ -13,6 +13,10 @@ All notable changes to SkillEvaluator are documented in this file.
   exceeded limits fail with actionable errors and never truncate the collection.
   Fresh pairwise scans reject excessive scalar work after the first validated
   embedding response, before requesting more embeddings or saving a catalog.
+  Collection discovery has its own 20,000-path ceiling, allowing the supported
+  5,000-entry maximum for minimal collections while retaining the 4,096-path
+  per-skill ceiling. Invalid Python command API budgets raise option-specific
+  errors before provider initialization.
 - Keep headings and comments inside fenced code examples in their enclosing Markdown
   section during Tier 2 content chunking, preserving original source line numbers.
 - Run the public Docker image as an unprivileged user, with writable default report and home directories.
